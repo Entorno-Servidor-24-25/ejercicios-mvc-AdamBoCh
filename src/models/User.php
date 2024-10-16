@@ -18,4 +18,17 @@ class User {
             return false;
         }
     }
+
+    public static function getAll($connection) {
+        $sql = "SELECT * FROM Usuario";
+        $result = $connection->query($sql);
+        $users = [];
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $users[] = $row;
+            }
+        }
+        return $users;
+    }
 }
