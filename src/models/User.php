@@ -1,5 +1,4 @@
 <?php
-
 class User {
     public $name;
 
@@ -31,4 +30,15 @@ class User {
         }
         return $users;
     }
+
+    public static function delete($id, $connection) {
+        $sql = "DELETE FROM Usuario WHERE id = $id";
+
+        if ($connection->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
+?>
