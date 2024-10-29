@@ -1,5 +1,4 @@
 <?php
-
 class User {
     public $name;
 
@@ -18,4 +17,28 @@ class User {
             return false;
         }
     }
+
+    public static function getAll($connection) {
+        $sql = "SELECT * FROM Usuario";
+        $result = $connection->query($sql);
+        $users = [];
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $users[] = $row;
+            }
+        }
+        return $users;
+    }
+
+    public static function delete($id, $connection) {
+        $sql = "DELETE FROM Usuario WHERE id = $id";
+
+        if ($connection->query($sql) === TRUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
+?>

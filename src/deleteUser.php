@@ -5,7 +5,7 @@ define('BASE_PATH', __DIR__);
 // Cargar el controlador
 require_once BASE_PATH . '/controllers/UserController.php';
 
-// Llamar al método que muestra el formulario
+// Crear una instancia del controlador y procesar la eliminación del usuario
 $controller = new UserController();
-$controller->showForm();
+$controller->deleteUser();
 ?>
